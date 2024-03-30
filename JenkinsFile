@@ -1,0 +1,37 @@
+pipeline {
+    agent any
+    
+    stages {
+        stage('Build') {
+            steps {
+                echo 'Building the application...'
+                // Your build steps here
+            }
+        }
+        
+        stage('Test') {
+            steps {
+                echo 'Running tests...'
+                // Your test steps here
+            }
+        }
+        
+        stage('Deploy') {
+            steps {
+                echo 'Deploying the application...'
+                // Your deployment steps here
+            }
+        }
+    }
+    
+    post {
+        success {
+            echo 'Pipeline succeeded! Send email notification...'
+            // Send success email notification
+        }
+        failure {
+            echo 'Pipeline failed! Send email notification...'
+            // Send failure email notification
+        }
+    }
+}

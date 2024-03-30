@@ -3,10 +3,10 @@ from sklearn.linear_model import LinearRegression
 import joblib
 
 def train_model(X, y):
-    # Create a linear regression model
+
+
     model = LinearRegression()
     
-    # Fit the model on the training data
     model.fit(X, y)
     
     return model

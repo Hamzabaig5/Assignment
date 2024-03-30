@@ -43,7 +43,7 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 script {
-                    docker.build("your_docker_image_name")
+                    docker.build("t_app")
                 }
             }
         }
@@ -51,8 +51,8 @@ pipeline {
         stage('Push to Docker Hub') {
             steps {
                 script {
-                    docker.withRegistry('https://registry.hub.docker.com', 'docker_hub_credentials') {
-                        docker.image("your_docker_image_name").push('latest')
+                    docker.withRegistry('https://hub.docker.com/repository/docker/tayyabqaisar/mlops_assingment1/general', 'assingment1') {
+                        docker.image("t_app").push('latest')
                     }
                 }
             }
@@ -63,12 +63,12 @@ pipeline {
         success {
             emailext subject: 'Jenkins Pipeline Success',
                       body: 'Your Jenkins pipeline was successful!',
-                      to: 'admin@example.com'
+                      to: 'tayyabqaisar41514@gmail.com'
         }
         failure {
             emailext subject: 'Jenkins Pipeline Failure',
                       body: 'Your Jenkins pipeline has failed.',
-                      to: 'admin@example.com'
+                      to: 'tayyabqaisar41514@gmail.com'
         }
     }
 }
